@@ -1,10 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(WelcomeScreen());
-}
-
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,34 +12,49 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 175,
+                  height: 175.0,
                 ),
                 Image.asset(
                   'images/logo.jpg',
-                  width: 375,
-                  height: 375,
+                  width: 375.0,
+                  height: 375.0,
+                ),
+                // SizedBox(
+                //   height: 208.0,
+                // ),
+                SizedBox(
+                  height: 100.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(75.0, 20.0, 75.0, 20.0),
+                  child: Text(
+                    'Cross-platform mobile application built using Flutter that displays parking lot vacancy within a city using deep learning data.',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 SizedBox(
-                  height: 200,
-                ),
-                SizedBox(
-                  width: 375,
-                  height: 50,
+                  width: 375.0,
+                  height: 50.0,
                   child: ElevatedButton(
-                    child: Text('Try Now'),
+                    child: Text(
+                      'Try Now',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
-                      primary: Colors.black,
+                      primary: Color(0xFF019FBF),
                     ),
                     onPressed: () {
-                      print('Pressed');
+                      print('Pressed "Try Now".');
                     },
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.0,
                 ),
                 RichText(
                   text: TextSpan(
@@ -55,15 +66,15 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                          text: 'Login',
+                          text: 'Login!',
                           style: TextStyle(
                             color: Color(0xFF019FBF),
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => print('Pressed')),
+                            ..onTap = () => print('Pressed "Login".')),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
