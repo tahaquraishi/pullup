@@ -19,19 +19,19 @@ class WelcomeScreen extends StatelessWidget {
                   width: 375.0,
                   height: 375.0,
                 ),
-                // SizedBox(
-                //   height: 208.0,
-                // ),
                 SizedBox(
-                  height: 100.0,
+                  height: 208.0,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(75.0, 20.0, 75.0, 20.0),
-                  child: Text(
-                    'Cross-platform mobile application built using Flutter that displays parking lot vacancy within a city using deep learning data.',
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                // SizedBox(
+                //   height: 100.0,
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.fromLTRB(75.0, 20.0, 75.0, 20.0),
+                //   child: Text(
+                //     'Cross-platform mobile application built using Flutter that displays parking lot vacancy within a city using deep learning data.',
+                //     textAlign: TextAlign.center,
+                //   ),
+                // ),
                 SizedBox(
                   width: 375.0,
                   height: 50.0,

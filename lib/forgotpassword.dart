@@ -1,13 +1,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatefulWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKeySignUp = GlobalKey<FormState>();
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final _formKeyForgotPassword = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20.0, 75.0, 0.0, 0.0),
                     child: Text(
-                      "Hi Friend!",
+                      "Forgot password?",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40.0,
@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 25.0),
                     child: Text(
-                      "Let's get started.",
+                      "Let's reset it.",
                       style: TextStyle(
                         fontSize: 40.0,
                       ),
@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               Form(
-                key: _formKeySignUp,
+                key: _formKeyForgotPassword,
                 child: Column(
                   children: [
                     Container(
@@ -75,60 +75,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 120.0,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a password.';
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.lock_open,
-                              color: Color(0xFF019FBF),
-                            ),
-                            labelText: 'Password',
-                          ),
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 120.0,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                        child: TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a password.';
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.lock_outline,
-                              color: Color(0xFF019FBF),
-                            ),
-                            labelText: 'Confirm Password',
-                          ),
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                        ),
-                      ),
-                    ),
                     SizedBox(
-                      height: 202.0,
+                      height: 442,
                     ),
                     Container(
                       child: Column(
@@ -138,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: 50.0,
                             child: ElevatedButton(
                                 child: Text(
-                                  'Sign Up',
+                                  'Reset Password',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -150,8 +98,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   primary: Color(0xFF019FBF),
                                 ),
                                 onPressed: () {
-                                  if (_formKeySignUp.currentState!.validate()) {
-                                    print('Pressed "Sign Up" and validated.');
+                                  if (_formKeyForgotPassword.currentState!
+                                      .validate()) {
+                                    print(
+                                        'Pressed "Reset Password" and validated.');
                                   }
                                 }),
                           ),
@@ -168,7 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
                                 TextSpan(
-                                    text: 'Login!',
+                                    text: 'Log In!',
                                     style: TextStyle(
                                       color: Color(0xFF019FBF),
                                     ),
