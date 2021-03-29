@@ -5,18 +5,18 @@ import 'package:pullup/screens/login.dart';
 import 'package:pullup/screens/signup.dart';
 import 'package:pullup/screens/welcome.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  // runApp(
-  //   MaterialApp(
-  //     home: WelcomeScreen(),
-  //   ),
-  // );
+  runApp(
+    MaterialApp(
+      home: LogInScreen(),
+    ),
+  );
 
   // runApp(WelcomeScreen());
-  runApp(SignUpScreen());
+  // runApp(SignUpScreen());
   // runApp(LogInScreen());
   // runApp(ForgotPasswordScreen());
 }

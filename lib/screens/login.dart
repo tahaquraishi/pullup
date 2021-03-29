@@ -159,12 +159,12 @@ class _LogInScreenState extends State<LogInScreen> {
                                     ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           ForgotPasswordScreen()),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ForgotPasswordScreen()),
+                                        );
                                       }),
                               ],
                             ),
@@ -208,12 +208,6 @@ class _LogInScreenState extends State<LogInScreen> {
                                       if (!user.emailVerified) {
                                         print('Please verify email to log in.');
                                       } else {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           HomeScreen()),
-                                        // );
                                         print('User successfully logged in.');
                                       }
                                     } on FirebaseAuthException catch (e) {
@@ -247,12 +241,12 @@ class _LogInScreenState extends State<LogInScreen> {
                                     ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           SignUpScreen()),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SignUpScreen()),
+                                        );
                                       }),
                               ],
                             ),

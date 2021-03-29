@@ -1,7 +1,7 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   @override
@@ -117,7 +117,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                       await auth.sendPasswordResetEmail(
                                           email: formControllerEmail.text);
                                       print('Password request email sent.');
-                                      // Navigator.pop(context);
+                                      Navigator.pop(context);
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == 'user-not-found') {
                                         print(
@@ -148,7 +148,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                     ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        // Navigator.pop(context);
+                                        Navigator.pop(context);
                                       }),
                               ],
                             ),

@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pullup/screens/home.dart';
 
 import 'login.dart';
 
@@ -195,38 +196,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                   primary: Color(0xFF019FBF),
                                 ),
-                                onPressed: () async {
+                                onPressed: () {
                                   if (_formKeySignUp.currentState!.validate()) {
-                                    try {
-                                      print(formControllerEmail.text);
-                                      print(formControllerPassword.text);
-                                      print(formControllerConfirmPassword.text);
-                                      UserCredential userCredentialSignUp =
-                                          await auth
-                                              .createUserWithEmailAndPassword(
-                                                  email:
-                                                      formControllerEmail.text,
-                                                  password:
-                                                      formControllerPassword
-                                                          .text);
-                                      User user = auth.currentUser!;
-                                      await user.sendEmailVerification();
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) =>
-                                      //           LogInScreen()),
-                                      // );
-                                      print('Account successfully created.');
-                                      print('Please verify email to log in.');
-                                    } on FirebaseAuthException catch (e) {
-                                      if (e.code == 'email-already-in-use') {
-                                        print(
-                                            'Account already exists with that email.');
-                                      }
-                                    } catch (e) {
-                                      print(e);
-                                    }
+                                    print(formControllerEmail.text);
+                                    print(formControllerPassword.text);
+                                    print(formControllerConfirmPassword.text);
+                                    _signUp(formControllerEmail.text,
+                                        formControllerPassword.text);
                                   }
                                 }),
                           ),
@@ -249,12 +225,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           LogInScreen()),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LogInScreen()),
+                                        );
                                       }),
                               ],
                             ),
@@ -270,5 +246,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  _signUp(String _email, String _password) async {
+    try {
+      await auth.createUserWithEmailAndPassword(
+          email: _email, password: _password);
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => LogInScreen()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        print('Account already exists with that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }
