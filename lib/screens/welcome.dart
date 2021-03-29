@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pullup/screens/login.dart';
+import 'package:pullup/screens/signup.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -49,7 +51,10 @@ class WelcomeScreen extends StatelessWidget {
                       primary: Color(0xFF019FBF),
                     ),
                     onPressed: () {
-                      print('Pressed "Try Now".');
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => SignUpScreen()),
+                      // );
                     },
                   ),
                 ),
@@ -71,7 +76,13 @@ class WelcomeScreen extends StatelessWidget {
                             color: Color(0xFF019FBF),
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => print('Pressed "Login".')),
+                            ..onTap = () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => LogInScreen()),
+                              // );
+                            }),
                     ],
                   ),
                 ),

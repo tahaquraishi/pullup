@@ -9,8 +9,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  // runApp(
+  //   MaterialApp(
+  //     home: WelcomeScreen(),
+  //   ),
+  // );
+
   // runApp(WelcomeScreen());
-  // runApp(SignUpScreen());
-  runApp(LogInScreen());
+  runApp(SignUpScreen());
+  // runApp(LogInScreen());
   // runApp(ForgotPasswordScreen());
 }

@@ -117,6 +117,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                       await auth.sendPasswordResetEmail(
                                           email: formControllerEmail.text);
                                       print('Password request email sent.');
+                                      // Navigator.pop(context);
                                     } on FirebaseAuthException catch (e) {
                                       if (e.code == 'user-not-found') {
                                         print(
@@ -146,8 +147,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                       color: Color(0xFF019FBF),
                                     ),
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap =
-                                          () => print('Pressed "Log In!".')),
+                                      ..onTap = () {
+                                        // Navigator.pop(context);
+                                      }),
                               ],
                             ),
                           ),

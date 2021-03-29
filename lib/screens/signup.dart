@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -209,6 +211,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                           .text);
                                       User user = auth.currentUser!;
                                       await user.sendEmailVerification();
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //       builder: (context) =>
+                                      //           LogInScreen()),
+                                      // );
                                       print('Account successfully created.');
                                       print('Please verify email to log in.');
                                     } on FirebaseAuthException catch (e) {
@@ -240,8 +248,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       color: Color(0xFF019FBF),
                                     ),
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap =
-                                          () => print('Pressed "Log In!".')),
+                                      ..onTap = () {
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           LogInScreen()),
+                                        // );
+                                      }),
                               ],
                             ),
                           ),
