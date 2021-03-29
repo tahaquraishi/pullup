@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class _LogInScreenState extends State<LogInScreen> {
   final _formKeyLogIn = GlobalKey<FormState>();
   final formControllerEmail = TextEditingController();
   final formControllerPassword = TextEditingController();
+  final auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -183,10 +185,31 @@ class _LogInScreenState extends State<LogInScreen> {
                                   ),
                                   primary: Color(0xFF019FBF),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formKeyLogIn.currentState!.validate()) {
                                     print(formControllerEmail.text);
                                     print(formControllerPassword.text);
+                                    try {
+                                      UserCredential userCredentialLogIn =
+                                          await auth.signInWithEmailAndPassword(
+                                              email: formControllerEmail.text,
+                                              password:
+                                                  formControllerPassword.text);
+                                      User user = auth.currentUser!;
+                                      if (!user.emailVerified) {
+                                        print('Please verify email to log in.');
+                                      } else {
+                                        print('User successfully logged in.');
+                                      }
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'user-not-found') {
+                                        print('No user found with that email.');
+                                      } else if (e.code == 'wrong-password') {
+                                        print('Incorrect password.');
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                    }
                                   }
                                 }),
                           ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
@@ -10,6 +11,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKeyForgotPassword = GlobalKey<FormState>();
   final formControllerEmail = TextEditingController();
+  final auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -108,10 +110,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                   ),
                                   primary: Color(0xFF019FBF),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formKeyForgotPassword.currentState!
                                       .validate()) {
-                                    print(formControllerEmail.text);
+                                    try {
+                                      await auth.sendPasswordResetEmail(
+                                          email: formControllerEmail.text);
+                                      print('Password request email sent.');
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'user-not-found') {
+                                        print(
+                                            'No user exists with that email.');
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                    }
                                   }
                                 }),
                           ),

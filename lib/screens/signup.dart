@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final formControllerEmail = TextEditingController();
   final formControllerPassword = TextEditingController();
   final formControllerConfirmPassword = TextEditingController();
+  final auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -191,11 +193,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                   primary: Color(0xFF019FBF),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_formKeySignUp.currentState!.validate()) {
-                                    print(formControllerEmail.text);
-                                    print(formControllerPassword.text);
-                                    print(formControllerConfirmPassword.text);
+                                    try {
+                                      print(formControllerEmail.text);
+                                      print(formControllerPassword.text);
+                                      print(formControllerConfirmPassword.text);
+                                      UserCredential userCredentialSignUp =
+                                          await auth
+                                              .createUserWithEmailAndPassword(
+                                                  email:
+                                                      formControllerEmail.text,
+                                                  password:
+                                                      formControllerPassword
+                                                          .text);
+                                      User user = auth.currentUser!;
+                                      await user.sendEmailVerification();
+                                      print('Account successfully created.');
+                                      print('Please verify email to log in.');
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'email-already-in-use') {
+                                        print(
+                                            'Account already exists with that email.');
+                                      }
+                                    } catch (e) {
+                                      print(e);
+                                    }
                                   }
                                 }),
                           ),
