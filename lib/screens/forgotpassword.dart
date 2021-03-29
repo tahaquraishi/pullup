@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   @override
@@ -64,8 +65,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter an email.';
+                            if (value == null ||
+                                value.isEmpty ||
+                                !(EmailValidator.validate(value))) {
+                              return 'Please enter a valid email.';
                             }
                             return null;
                           },

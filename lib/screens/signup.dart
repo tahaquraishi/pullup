@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -62,14 +63,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   children: [
                     Container(
-                      height: 120.0,
+                      height: 150.0,
                       child: Padding(
                         padding:
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter an email.';
+                            if (value == null ||
+                                value.isEmpty ||
+                                !(EmailValidator.validate(value))) {
+                              return 'Please enter a valid email.';
                             }
                             return null;
                           },
@@ -88,14 +91,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     Container(
-                      height: 120.0,
+                      height: 150.0,
                       child: Padding(
                         padding:
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a password.';
+                            String pattern =
+                                r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+                            RegExp regex = new RegExp(pattern);
+                            if (value == null ||
+                                value.isEmpty ||
+                                !(regex.hasMatch(value))) {
+                              return 'Password must have at least: 8 characters, 1 uppercase letter, 1 lower case letter, 1 digit, and 1 special character.';
+                            } else {
+                              if ((formControllerPassword.text !=
+                                      formControllerConfirmPassword.text) &&
+                                  formControllerConfirmPassword
+                                      .text.isNotEmpty) {
+                                return 'Passwords do not match.';
+                              }
                             }
                             return null;
                           },
@@ -105,6 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xFF019FBF),
                             ),
                             labelText: 'Password',
+                            errorMaxLines: 2,
                           ),
                           controller: formControllerPassword,
                           obscureText: true,
@@ -115,14 +131,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     Container(
-                      height: 120.0,
+                      height: 150.0,
                       child: Padding(
                         padding:
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a password.';
+                            String pattern =
+                                r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{4,}$';
+                            RegExp regex = new RegExp(pattern);
+                            if (value == null ||
+                                value.isEmpty ||
+                                !(regex.hasMatch(value))) {
+                              return 'Password must have at least: 8 characters, 1 uppercase letter, 1 lower case letter, 1 digit, and 1 special character.';
+                            } else {
+                              if ((formControllerPassword.text !=
+                                      formControllerConfirmPassword.text) &&
+                                  formControllerPassword.text.isNotEmpty) {
+                                return 'Passwords do not match.';
+                              }
                             }
                             return null;
                           },
@@ -132,6 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xFF019FBF),
                             ),
                             labelText: 'Confirm Password',
+                            errorMaxLines: 2,
                           ),
                           controller: formControllerConfirmPassword,
                           obscureText: true,
@@ -142,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 202.0,
+                      height: 112.0,
                     ),
                     Container(
                       child: Column(

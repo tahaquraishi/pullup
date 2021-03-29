@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -89,8 +90,10 @@ class _LogInScreenState extends State<LogInScreen> {
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter an email.';
+                            if (value == null ||
+                                value.isEmpty ||
+                                !(EmailValidator.validate(value))) {
+                              return 'Please enter a valid email.';
                             }
                             return null;
                           },
@@ -116,7 +119,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter a password.';
+                              return 'Please enter a valid password.';
                             }
                             return null;
                           },
