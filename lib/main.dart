@@ -6,7 +6,7 @@ import 'package:pullup/welcome.dart';
 
 void main() {
   // runApp(WelcomeScreen());
-  // runApp(SignUpScreen());
-  runApp(LogInScreen());
+  runApp(SignUpScreen());
+  // runApp(LogInScreen());
   // runApp(ForgotPasswordScreen());
 }

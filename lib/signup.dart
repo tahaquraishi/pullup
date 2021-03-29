@@ -8,6 +8,17 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKeySignUp = GlobalKey<FormState>();
+  final formControllerEmail = TextEditingController();
+  final formControllerPassword = TextEditingController();
+  final formControllerConfirmPassword = TextEditingController();
+
+  @override
+  void dispose() {
+    formControllerEmail.dispose();
+    formControllerPassword.dispose();
+    formControllerConfirmPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             labelText: 'Email',
                           ),
+                          controller: formControllerEmail,
                           enableSuggestions: false,
                           autocorrect: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -94,6 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             labelText: 'Password',
                           ),
+                          controller: formControllerPassword,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
@@ -120,6 +133,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             labelText: 'Confirm Password',
                           ),
+                          controller: formControllerConfirmPassword,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
@@ -151,7 +165,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 onPressed: () {
                                   if (_formKeySignUp.currentState!.validate()) {
-                                    print('Pressed "Sign Up" and validated.');
+                                    print(formControllerEmail.text);
+                                    print(formControllerPassword.text);
+                                    print(formControllerConfirmPassword.text);
                                   }
                                 }),
                           ),

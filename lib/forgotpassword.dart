@@ -8,6 +8,13 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKeyForgotPassword = GlobalKey<FormState>();
+  final formControllerEmail = TextEditingController();
+
+  @override
+  void dispose() {
+    formControllerEmail.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +76,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                             labelText: 'Email',
                           ),
+                          controller: formControllerEmail,
                           enableSuggestions: false,
                           autocorrect: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -100,8 +108,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 onPressed: () {
                                   if (_formKeyForgotPassword.currentState!
                                       .validate()) {
-                                    print(
-                                        'Pressed "Reset Password" and validated.');
+                                    print(formControllerEmail.text);
                                   }
                                 }),
                           ),

@@ -8,6 +8,15 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInScreenState extends State<LogInScreen> {
   final _formKeyLogIn = GlobalKey<FormState>();
+  final formControllerEmail = TextEditingController();
+  final formControllerPassword = TextEditingController();
+
+  @override
+  void dispose() {
+    formControllerEmail.dispose();
+    formControllerPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +101,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             labelText: 'Email',
                           ),
+                          controller: formControllerEmail,
                           enableSuggestions: false,
                           autocorrect: false,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -117,6 +127,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                             labelText: 'Password',
                           ),
+                          controller: formControllerPassword,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
@@ -171,7 +182,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                 ),
                                 onPressed: () {
                                   if (_formKeyLogIn.currentState!.validate()) {
-                                    print('Pressed "Log In" and validated.');
+                                    print(formControllerEmail.text);
+                                    print(formControllerPassword.text);
                                   }
                                 }),
                           ),
