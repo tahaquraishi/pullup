@@ -198,27 +198,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                   if (_formKeyLogIn.currentState!.validate()) {
                                     print(formControllerEmail.text);
                                     print(formControllerPassword.text);
-                                    try {
-                                      UserCredential userCredentialLogIn =
-                                          await auth.signInWithEmailAndPassword(
-                                              email: formControllerEmail.text,
-                                              password:
-                                                  formControllerPassword.text);
-                                      User user = auth.currentUser!;
-                                      if (!user.emailVerified) {
-                                        print('Please verify email to log in.');
-                                      } else {
-                                        print('User successfully logged in.');
-                                      }
-                                    } on FirebaseAuthException catch (e) {
-                                      if (e.code == 'user-not-found') {
-                                        print('No user found with that email.');
-                                      } else if (e.code == 'wrong-password') {
-                                        print('Incorrect password.');
-                                      }
-                                    } catch (e) {
-                                      print(e);
-                                    }
+                                    _logIn(formControllerEmail.text,
+                                        formControllerPassword.text);
                                   }
                                 }),
                           ),
@@ -262,5 +243,30 @@ class _LogInScreenState extends State<LogInScreen> {
         ),
       ),
     );
+  }
+
+  _logIn(String _email, String _password) async {
+    try {
+      await auth.signInWithEmailAndPassword(
+          email: formControllerEmail.text,
+          password: formControllerPassword.text);
+      auth.authStateChanges().listen((User? user) {
+        if (!(user!.emailVerified)) {
+          print('Please verify email to log in.');
+        } else {
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeScreen()));
+          print('User successfully logged in.');
+        }
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found with that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Incorrect password.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

@@ -113,19 +113,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 onPressed: () async {
                                   if (_formKeyForgotPassword.currentState!
                                       .validate()) {
-                                    try {
-                                      await auth.sendPasswordResetEmail(
-                                          email: formControllerEmail.text);
-                                      print('Password request email sent.');
-                                      Navigator.pop(context);
-                                    } on FirebaseAuthException catch (e) {
-                                      if (e.code == 'user-not-found') {
-                                        print(
-                                            'No user exists with that email.');
-                                      }
-                                    } catch (e) {
-                                      print(e);
-                                    }
+                                    print(formControllerEmail.text);
+                                    _forgotPassword(formControllerEmail.text);
                                   }
                                 }),
                           ),
@@ -164,5 +153,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         ),
       ),
     );
+  }
+
+  _forgotPassword(String _email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: formControllerEmail.text);
+      print('Password request email sent.');
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user exists with that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

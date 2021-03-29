@@ -252,6 +252,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
+      auth.authStateChanges().listen((User? user) async {
+        if (!(user!.emailVerified)) {
+          print('Please verify email to log in.');
+          await user.sendEmailVerification();
+        } else {
+          print('Account successfully created.');
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeScreen()));
+        }
+      });
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LogInScreen()));
     } on FirebaseAuthException catch (e) {
