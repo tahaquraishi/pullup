@@ -1,24 +1,55 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:flutter/material.dart';
 
-import 'package:pullup/screens/forgotpassword.dart';
-import 'package:pullup/screens/login.dart';
-import 'package:pullup/screens/signup.dart';
-import 'package:pullup/eol/welcome.dart';
+import 'package:pullup/views/home.dart';
+import 'package:pullup/views/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(
-    MaterialApp(
-      home: LogInScreen(),
-    ),
-  );
+  // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+  //   if (user == null) {
+  //     Fluttertoast.showToast(
+  //       msg: 'User logged in.',
+  //       gravity: ToastGravity.TOP,
+  //       toastLength: Toast.LENGTH_LONG,
+  //       timeInSecForIosWeb: 3,
+  //     );
+  //     runApp(
+  //       MaterialApp(
+  //         home: HomeScreen(),
+  //       ),
+  //     );
+  //   } else {
+  //     runApp(
+  //       MaterialApp(
+  //         home: LogInScreen(),
+  //       ),
+  //     );
+  //   }
+  // });
 
-  // runApp(WelcomeScreen());
-  // runApp(SignUpScreen());
-  // runApp(LogInScreen());
-  // runApp(ForgotPasswordScreen());
+  if (await FirebaseAuth.instance.currentUser != null) {
+    Fluttertoast.showToast(
+      msg: 'User logged in.',
+      gravity: ToastGravity.TOP,
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIosWeb: 3,
+    );
+    runApp(
+      MaterialApp(
+        home: HomeScreen(),
+      ),
+    );
+  } else {
+    runApp(
+      MaterialApp(
+        home: LogInScreen(),
+      ),
+    );
+  }
 }

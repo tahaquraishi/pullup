@@ -5,27 +5,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:pullup/screens/home.dart';
+import 'package:pullup/views/forgotpassword.dart';
+import 'package:pullup/views//home.dart';
+import 'package:pullup/views/signup.dart';
 
-import 'login.dart';
-
-class SignUpScreen extends StatefulWidget {
+class LogInScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _LogInScreenState createState() => _LogInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKeySignUp = GlobalKey<FormState>();
+class _LogInScreenState extends State<LogInScreen> {
+  final _formKeyLogIn = GlobalKey<FormState>();
   final formControllerEmail = TextEditingController();
   final formControllerPassword = TextEditingController();
-  final formControllerConfirmPassword = TextEditingController();
   final auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
     formControllerEmail.dispose();
     formControllerPassword.dispose();
-    formControllerConfirmPassword.dispose();
     super.dispose();
   }
 
@@ -38,40 +36,63 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             children: [
               Container(
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20.0, 75.0, 0.0, 0.0),
-                    child: Text(
-                      "Hi Friend!",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40.0,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(20.0, 75.0, 0.0, 0.0),
+                        child: Text(
+                          "Hello",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 80.0,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(20.0, 150.0, 0.0, 0.0),
+                        child: RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'There',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 80.0,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '.',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 80.0,
+                                  color: Color(0xFF019FBF),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 25.0),
-                    child: Text(
-                      "Let's get started.",
-                      style: TextStyle(
-                        fontSize: 40.0,
-                      ),
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: 100.0,
               ),
               Form(
-                key: _formKeySignUp,
+                key: _formKeyLogIn,
                 child: Column(
                   children: [
                     Container(
-                      height: 150.0,
+                      height: 120.0,
                       child: Padding(
                         padding:
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
@@ -99,36 +120,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     Container(
-                      height: 150.0,
+                      height: 120.0,
                       child: Padding(
                         padding:
                             const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: TextFormField(
                           validator: (value) {
-                            String pattern =
-                                r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-                            RegExp regex = new RegExp(pattern);
-                            if (value == null ||
-                                value.isEmpty ||
-                                !(regex.hasMatch(value))) {
-                              return 'Password must have at least: 8 characters, 1 uppercase letter, 1 lower case letter, 1 digit, and 1 special character.';
-                            } else {
-                              if ((formControllerPassword.text !=
-                                      formControllerConfirmPassword.text) &&
-                                  formControllerConfirmPassword
-                                      .text.isNotEmpty) {
-                                return 'Passwords do not match.';
-                              }
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a valid password.';
                             }
                             return null;
                           },
                           decoration: const InputDecoration(
                             suffixIcon: Icon(
-                              Icons.lock_open,
+                              Icons.lock_outline,
                               color: Color(0xFF019FBF),
                             ),
                             labelText: 'Password',
-                            errorMaxLines: 2,
                           ),
                           controller: formControllerPassword,
                           obscureText: true,
@@ -139,46 +147,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     Container(
-                      height: 150.0,
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                        child: TextFormField(
-                          validator: (value) {
-                            String pattern =
-                                r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{4,}$';
-                            RegExp regex = new RegExp(pattern);
-                            if (value == null ||
-                                value.isEmpty ||
-                                !(regex.hasMatch(value))) {
-                              return 'Password must have at least: 8 characters, 1 uppercase letter, 1 lower case letter, 1 digit, and 1 special character.';
-                            } else {
-                              if ((formControllerPassword.text !=
-                                      formControllerConfirmPassword.text) &&
-                                  formControllerPassword.text.isNotEmpty) {
-                                return 'Passwords do not match.';
-                              }
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.lock_outline,
-                              color: Color(0xFF019FBF),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
+                          child: RichText(
+                            text: TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: 'Forgot password?',
+                                    style: TextStyle(
+                                      color: Color(0xFF019FBF),
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ForgotPasswordScreen()),
+                                        );
+                                      }),
+                              ],
                             ),
-                            labelText: 'Confirm Password',
-                            errorMaxLines: 2,
                           ),
-                          controller: formControllerConfirmPassword,
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 112.0,
+                      height: 156.0,
                     ),
                     Container(
                       child: Column(
@@ -188,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             height: 50.0,
                             child: ElevatedButton(
                                 child: Text(
-                                  'Sign Up',
+                                  'Log In',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -199,12 +197,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                   primary: Color(0xFF019FBF),
                                 ),
-                                onPressed: () {
-                                  if (_formKeySignUp.currentState!.validate()) {
+                                onPressed: () async {
+                                  if (_formKeyLogIn.currentState!.validate()) {
                                     print(formControllerEmail.text);
                                     print(formControllerPassword.text);
-                                    print(formControllerConfirmPassword.text);
-                                    _signUp(formControllerEmail.text,
+                                    _logIn(formControllerEmail.text,
                                         formControllerPassword.text);
                                   }
                                 }),
@@ -216,13 +213,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             text: TextSpan(
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: 'Already a member? ',
+                                  text: 'New member? ',
                                   style: TextStyle(
                                     color: Colors.black,
                                   ),
                                 ),
                                 TextSpan(
-                                    text: 'Login!',
+                                    text: 'Sign Up!',
                                     style: TextStyle(
                                       color: Color(0xFF019FBF),
                                     ),
@@ -232,7 +229,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  LogInScreen()),
+                                                  SignUpScreen()),
                                         );
                                       }),
                               ],
@@ -251,33 +248,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  _signUp(String _email, String _password) async {
+  _logIn(String _email, String _password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: _email, password: _password);
-      // print('Account created.');
-      auth.authStateChanges().listen((User? user) async {
+      await auth.signInWithEmailAndPassword(
+          email: formControllerEmail.text,
+          password: formControllerPassword.text);
+      auth.authStateChanges().listen((User? user) {
         if (!(user!.emailVerified)) {
-          await user.sendEmailVerification();
           // print('Please verify email to log in.');
           Fluttertoast.showToast(
-            msg: 'Account created. Please verify email to log in.',
+            msg: 'Please verify email to log in.',
             gravity: ToastGravity.TOP,
             toastLength: Toast.LENGTH_LONG,
             timeInSecForIosWeb: 2,
           );
+        } else {
+          // print('User successfully logged in.');
+          Fluttertoast.showToast(
+            msg: 'User logged in.',
+            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            timeInSecForIosWeb: 3,
+          );
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeScreen()));
         }
       });
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => LogInScreen()));
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        // print('Account already exists with that email.');
+      if (e.code == 'user-not-found') {
         Fluttertoast.showToast(
-          msg: 'Account already exists with that email.',
+          msg: 'No user exists with that email.',
           gravity: ToastGravity.TOP,
           toastLength: Toast.LENGTH_LONG,
-          timeInSecForIosWeb: 2,
+          timeInSecForIosWeb: 3,
+        );
+      } else if (e.code == 'wrong-password') {
+        // print('Incorrect password.');
+        Fluttertoast.showToast(
+          msg: 'Incorrect password.',
+          gravity: ToastGravity.TOP,
+          toastLength: Toast.LENGTH_LONG,
+          timeInSecForIosWeb: 3,
         );
       }
     } catch (e) {

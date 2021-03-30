@@ -165,7 +165,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         msg: 'Password reset request email has been sent.',
         gravity: ToastGravity.TOP,
         toastLength: Toast.LENGTH_LONG,
-        timeInSecForIosWeb: 2,
+        timeInSecForIosWeb: 3,
       );
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -175,7 +175,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           msg: 'No account found with that email.',
           gravity: ToastGravity.TOP,
           toastLength: Toast.LENGTH_LONG,
-          timeInSecForIosWeb: 2,
+          timeInSecForIosWeb: 3,
         );
       }
     } catch (e) {

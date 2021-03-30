@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:pullup/screens/login.dart';
-import 'package:pullup/screens/signup.dart';
+import 'package:pullup/views/login.dart';
+import 'package:pullup/views/signup.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
