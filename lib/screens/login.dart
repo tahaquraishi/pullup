@@ -1,7 +1,10 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:pullup/screens/forgotpassword.dart';
 import 'package:pullup/screens/home.dart';
 import 'package:pullup/screens/signup.dart';
@@ -252,18 +255,41 @@ class _LogInScreenState extends State<LogInScreen> {
           password: formControllerPassword.text);
       auth.authStateChanges().listen((User? user) {
         if (!(user!.emailVerified)) {
-          print('Please verify email to log in.');
+          // print('Please verify email to log in.');
+          Fluttertoast.showToast(
+            msg: 'Please verify email to log in.',
+            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            timeInSecForIosWeb: 2,
+          );
         } else {
+          // print('User successfully logged in.');
+          Fluttertoast.showToast(
+            msg: 'User logged in.',
+            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            timeInSecForIosWeb: 2,
+          );
           Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => HomeScreen()));
-          print('User successfully logged in.');
         }
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found with that email.');
+        Fluttertoast.showToast(
+          msg: 'No user exists with that email.',
+          gravity: ToastGravity.TOP,
+          toastLength: Toast.LENGTH_LONG,
+          timeInSecForIosWeb: 2,
+        );
       } else if (e.code == 'wrong-password') {
-        print('Incorrect password.');
+        // print('Incorrect password.');
+        Fluttertoast.showToast(
+          msg: 'Incorrect password.',
+          gravity: ToastGravity.TOP,
+          toastLength: Toast.LENGTH_LONG,
+          timeInSecForIosWeb: 2,
+        );
       }
     } catch (e) {
       print(e);

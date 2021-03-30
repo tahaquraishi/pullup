@@ -1,5 +1,7 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -158,11 +160,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   _forgotPassword(String _email) async {
     try {
       await auth.sendPasswordResetEmail(email: formControllerEmail.text);
-      print('Password request email sent.');
+      // print('Password reset request email sent.');
+      Fluttertoast.showToast(
+        msg: 'Password reset request email has been sent.',
+        gravity: ToastGravity.TOP,
+        toastLength: Toast.LENGTH_LONG,
+        timeInSecForIosWeb: 2,
+      );
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user exists with that email.');
+        // print('No user exists with that email.');
+        Fluttertoast.showToast(
+          msg: 'No account found with that email.',
+          gravity: ToastGravity.TOP,
+          toastLength: Toast.LENGTH_LONG,
+          timeInSecForIosWeb: 2,
+        );
       }
     } catch (e) {
       print(e);

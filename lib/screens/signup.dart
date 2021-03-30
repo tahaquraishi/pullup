@@ -1,7 +1,10 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:pullup/screens/home.dart';
 
 import 'login.dart';
@@ -252,21 +255,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
+      // print('Account created.');
       auth.authStateChanges().listen((User? user) async {
         if (!(user!.emailVerified)) {
-          print('Please verify email to log in.');
           await user.sendEmailVerification();
-        } else {
-          print('Account successfully created.');
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => HomeScreen()));
+          // print('Please verify email to log in.');
+          Fluttertoast.showToast(
+            msg: 'Account created. Please verify email to log in.',
+            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            timeInSecForIosWeb: 2,
+          );
         }
       });
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => LogInScreen()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        print('Account already exists with that email.');
+        // print('Account already exists with that email.');
+        Fluttertoast.showToast(
+          msg: 'Account already exists with that email.',
+          gravity: ToastGravity.TOP,
+          toastLength: Toast.LENGTH_LONG,
+          timeInSecForIosWeb: 2,
+        );
       }
     } catch (e) {
       print(e);
