@@ -36,6 +36,8 @@ dependencies:
   firebase_core: ^1.0.2
   firebase_auth: ^1.0.1
   fluttertoast: ^8.0.3
+  intl: ^0.17.0
+  curved_navigation_bar: ^0.3.7
 
 dev_dependencies:
   flutter_test:
