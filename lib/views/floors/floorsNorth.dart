@@ -152,6 +152,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -172,6 +179,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -195,13 +209,20 @@ class _NorthFloorsState extends State<NorthFloors> {
                   ),
                   Container(
                     width: 293.0,
-                    height: 50.0,
+                    height: 55.0,
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       border: Border.all(
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -222,6 +243,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -252,6 +280,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -272,6 +307,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -302,6 +344,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -322,6 +371,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -352,6 +408,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -372,6 +435,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -402,6 +472,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                         color: Color(0xFF019FBF),
                       ),
                       borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -422,6 +499,13 @@ class _NorthFloorsState extends State<NorthFloors> {
                     decoration: BoxDecoration(
                       color: Color(0xFF019FBF),
                       shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 7,
+                            offset: Offset(0, 5))
+                      ],
                     ),
                     child: Center(
                       child: Text(
