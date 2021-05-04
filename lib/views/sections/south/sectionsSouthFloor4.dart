@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:pullup/views/announcements.dart';
+import 'package:pullup/views/home.dart';
+import 'package:pullup/views/settings.dart';
 
-class SouthSections extends StatefulWidget {
+class SouthSectionsFloor4 extends StatefulWidget {
   @override
-  _SouthSectionsState createState() => _SouthSectionsState();
+  _SouthSectionsFloor4State createState() => _SouthSectionsFloor4State();
 }
 
-class _SouthSectionsState extends State<SouthSections> {
+class _SouthSectionsFloor4State extends State<SouthSectionsFloor4> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +25,18 @@ class _SouthSectionsState extends State<SouthSections> {
           Icon(Icons.home, size: 30),
           Icon(Icons.settings, size: 30),
         ],
-        onTap: (index) {},
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => AnnouncementsScreen()));
+          } else if (index == 1) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomeScreen()));
+          } else {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => SettingsScreen()));
+          }
+        },
       ),
       body: SafeArea(
         child: Column(children: [
@@ -94,7 +108,7 @@ class _SouthSectionsState extends State<SouthSections> {
                         ),
                       ),
                       Text(
-                        'Vacant Spaces',
+                        'Floor 4 Vacancy',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.grey,

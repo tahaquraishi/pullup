@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:pullup/views/announcements.dart';
+import 'package:pullup/views/home.dart';
+import 'package:pullup/views/settings.dart';
 
-class WestSections extends StatefulWidget {
+class SouthSectionsFloor5 extends StatefulWidget {
   @override
-  _WestSectionsState createState() => _WestSectionsState();
+  _SouthSectionsFloor5State createState() => _SouthSectionsFloor5State();
 }
 
-class _WestSectionsState extends State<WestSections> {
+class _SouthSectionsFloor5State extends State<SouthSectionsFloor5> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +25,18 @@ class _WestSectionsState extends State<WestSections> {
           Icon(Icons.home, size: 30),
           Icon(Icons.settings, size: 30),
         ],
-        onTap: (index) {},
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => AnnouncementsScreen()));
+          } else if (index == 1) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomeScreen()));
+          } else {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => SettingsScreen()));
+          }
+        },
       ),
       body: SafeArea(
         child: Column(children: [
@@ -34,7 +48,7 @@ class _WestSectionsState extends State<WestSections> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 75.0, 0.0, 0.0),
                   child: Text(
-                    "West",
+                    "South",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 80.0,
@@ -94,7 +108,7 @@ class _WestSectionsState extends State<WestSections> {
                         ),
                       ),
                       Text(
-                        'Vacant Spaces',
+                        'Floor 5 Vacancy',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.grey,
@@ -136,6 +150,9 @@ class _WestSectionsState extends State<WestSections> {
           SizedBox(
             height: 20.0,
           ),
+          // SizedBox(
+          //   height: 15.0,
+          // ),
           Row(
             children: [
               SizedBox(

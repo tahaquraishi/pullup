@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //final auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
   @required
   late String _timeString = "";
   late int _weekDay = 1;
@@ -45,19 +46,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     .split(" ")[1]
                     .split(".")[0]
                     .split(":")[0]);
-                if (_hour >= 13 && _hour <= 24) {
-                  _hour = _hour - 12;
+                if (_hour == 12) {
+                  _hour = 12;
                   _timeString = _hour.toString() +
                       ":" +
                       _timeString.toString().split(":")[1] +
                       " PM";
                 }
-                if (_hour == 0 && _hour <= 12) {
+                if (_hour == 0 || _hour == 24) {
+                  _hour = 12;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " AM";
+                }
+                if (_hour > 0 && _hour < 12) {
                   _hour = _hour;
                   _timeString = _hour.toString() +
                       ":" +
                       _timeString.toString().split(":")[1] +
-                      "AM";
+                      " AM";
+                }
+                if (_hour > 12 && _hour < 24) {
+                  _hour = _hour - 12;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " PM";
                 }
                 _weekDay = DateTime.now().weekday;
                 if (_weekDay == 1) {

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:pullup/views/announcements.dart';
+import 'package:pullup/views/home.dart';
+import 'package:pullup/views/settings.dart';
 
-class NorthSections extends StatefulWidget {
+class WestSectionsFloor4 extends StatefulWidget {
   @override
-  _NorthSectionsState createState() => _NorthSectionsState();
+  _WestSectionsFloor4State createState() => _WestSectionsFloor4State();
 }
 
-class _NorthSectionsState extends State<NorthSections> {
+class _WestSectionsFloor4State extends State<WestSectionsFloor4> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +25,18 @@ class _NorthSectionsState extends State<NorthSections> {
           Icon(Icons.home, size: 30),
           Icon(Icons.settings, size: 30),
         ],
-        onTap: (index) {},
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => AnnouncementsScreen()));
+          } else if (index == 1) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => HomeScreen()));
+          } else {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => SettingsScreen()));
+          }
+        },
       ),
       body: SafeArea(
         child: Column(children: [
@@ -34,7 +48,7 @@ class _NorthSectionsState extends State<NorthSections> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 75.0, 0.0, 0.0),
                   child: Text(
-                    "North",
+                    "West",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 80.0,
@@ -94,7 +108,7 @@ class _NorthSectionsState extends State<NorthSections> {
                         ),
                       ),
                       Text(
-                        'Vacant Spaces',
+                        'Floor 4 Vacancy',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.grey,

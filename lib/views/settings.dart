@@ -1,8 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pullup/views/announcements.dart';
 import 'package:pullup/views/home.dart';
+
+import 'login.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -10,6 +14,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     Color getColor(Set<MaterialState> states) {
@@ -112,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       color: Colors.black,
                     ),
                   ),
-                  Text('pullup@sjsu.edu   ',
+                  Text('pullup.sjsu@gmail.com   ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -138,7 +144,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Password    *******',
+                    'Password:    *******',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
@@ -185,16 +191,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SizedBox(
             height: 40.0,
           ),
-          TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.resolveWith(getColor),
-            ),
-            child: Text(
-              'Change password',
-              style: TextStyle(fontSize: 24),
-            ),
-            onPressed: () {},
-          ),
           SizedBox(
             height: 120.0,
           ),
@@ -206,7 +202,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     'Logout',
                     style: TextStyle(fontSize: 25),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await auth.signOut();
+                    // print('User successfully logged out.');
+                    Fluttertoast.showToast(
+                      msg: 'User logged out.',
+                      gravity: ToastGravity.TOP,
+                      toastLength: Toast.LENGTH_LONG,
+                      timeInSecForIosWeb: 3,
+                    );
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LogInScreen()));
+                  },
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.resolveWith(getColor),

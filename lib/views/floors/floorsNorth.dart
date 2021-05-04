@@ -1,6 +1,15 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:pullup/views/announcements.dart';
+import 'package:pullup/views/home.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor1.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor2.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor3.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor4.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor5.dart';
+import 'package:pullup/views/sections/north/sectionsNorthFloor6.dart';
+import 'package:pullup/views/settings.dart';
 
 class NorthFloors extends StatefulWidget {
   @override
@@ -23,7 +32,18 @@ class _NorthFloorsState extends State<NorthFloors> {
             Icon(Icons.home, size: 30),
             Icon(Icons.settings, size: 30),
           ],
-          onTap: (index) {},
+          onTap: (index) {
+            if (index == 0) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => AnnouncementsScreen()));
+            } else if (index == 1) {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
+            } else {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => SettingsScreen()));
+            }
+          },
         ),
         body: SafeArea(
           child: Column(
@@ -96,7 +116,7 @@ class _NorthFloorsState extends State<NorthFloors> {
                             ),
                           ),
                           Text(
-                            'Vacant Spaces',
+                            'Vacancy',
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.grey,
@@ -143,29 +163,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor6()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 6',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 6',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -173,26 +199,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor6()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -207,29 +239,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor5()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 5',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 5',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -237,26 +275,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor5()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -271,29 +315,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor4()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 4',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 4',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -301,26 +351,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor4()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -335,29 +391,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor3()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 3',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 3',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -365,26 +427,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor3()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -399,29 +467,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor2()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 2',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 2',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -429,26 +503,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor2()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -463,29 +543,35 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 293.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      border: Border.all(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor1()));
+                    },
+                    child: Container(
+                      width: 293.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
                         color: Color(0xFF019FBF),
+                        border: Border.all(
+                          color: Color(0xFF019FBF),
+                        ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(20.0),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Floor 1',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                      child: Center(
+                        child: Text(
+                          'Floor 1',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
@@ -493,26 +579,32 @@ class _NorthFloorsState extends State<NorthFloors> {
                   SizedBox(
                     width: 20.0,
                   ),
-                  Container(
-                    width: 75.0,
-                    height: 55.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF019FBF),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: Offset(0, 5))
-                      ],
-                    ),
-                    child: Center(
-                      child: Text(
-                        '#',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => NorthSectionsFloor1()));
+                    },
+                    child: Container(
+                      width: 75.0,
+                      height: 55.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF019FBF),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: Offset(0, 5))
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          '#',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
                         ),
                       ),
                     ),
