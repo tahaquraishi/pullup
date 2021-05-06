@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:pullup/views/announcements.dart';
@@ -10,8 +13,254 @@ class NorthSectionsFloor1 extends StatefulWidget {
 }
 
 class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
+  @required
+  late String _timeString = "...";
+  late int _weekDay = 1;
+  late String _dayOfWeek;
+  late String _date = "";
+  late String _year = "";
+  late String _month = "";
+  late String _day = "";
+  late int _hour = 0;
+  // late String _min;
+  // late String _sec;
+
+  @override
+  void initState() {
+    Timer.periodic(
+        Duration(seconds: 1),
+        (Timer t) => {
+              setState(() {
+                _timeString = DateTime.now().toString();
+                _date = _timeString.toString().split(" ")[0];
+                _year = _date.split("-")[0];
+                _month = _date.split("-")[1];
+                _day = _date.split("-")[2];
+                _hour = int.parse(_timeString
+                    .toString()
+                    .split(" ")[1]
+                    .split(".")[0]
+                    .split(":")[0]);
+                if (_hour == 12) {
+                  _hour = 12;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " PM";
+                }
+                if (_hour == 0 || _hour == 24) {
+                  _hour = 12;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " AM";
+                }
+                if (_hour > 0 && _hour < 12) {
+                  _hour = _hour;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " AM";
+                }
+                if (_hour > 12 && _hour < 24) {
+                  _hour = _hour - 12;
+                  _timeString = _hour.toString() +
+                      ":" +
+                      _timeString.toString().split(":")[1] +
+                      " PM";
+                }
+                _weekDay = DateTime.now().weekday;
+                if (_weekDay == 1) {
+                  _dayOfWeek = "Monday";
+                }
+
+                if (_weekDay == 2) {
+                  _dayOfWeek = "Tuesday";
+                }
+
+                if (_weekDay == 3) {
+                  _dayOfWeek = "Wednesday";
+                }
+
+                if (_weekDay == 4) {
+                  _dayOfWeek = "Thursday";
+                }
+
+                if (_weekDay == 5) {
+                  _dayOfWeek = "Friday";
+                }
+
+                if (_weekDay == 6) {
+                  _dayOfWeek = "Saturday";
+                }
+
+                if (_weekDay == 7) {
+                  _dayOfWeek = "Sunday";
+                }
+
+                // _weekDay = d.weekday;
+              })
+            });
+  }
+
+  final databaseReferenceA = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_A")
+      .child("available_spots");
+  final databaseReferenceB = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_B")
+      .child("available_spots");
+  final databaseReferenceC = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_C")
+      .child("available_spots");
+  final databaseReferenceD = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_D")
+      .child("available_spots");
+  final databaseReferenceE = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_E")
+      .child("available_spots");
+  final databaseReferenceF = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_F")
+      .child("available_spots");
+  final databaseReferenceG = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_G")
+      .child("available_spots");
+  final databaseReferenceH = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_H")
+      .child("available_spots");
+  final databaseReferenceI = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_I")
+      .child("available_spots");
+  final databaseReferenceJ = FirebaseDatabase.instance
+      .reference()
+      .child("North_Garage_Floor_1")
+      .child("Section_J")
+      .child("available_spots");
+  String sectionA = "";
+  String sectionB = "";
+  String sectionC = "";
+  String sectionD = "";
+  String sectionE = "";
+  String sectionF = "";
+  String sectionG = "";
+  String sectionH = "";
+  String sectionI = "";
+  String sectionJ = "";
+  int secA = 0;
+  int secB = 0;
+  int secC = 0;
+  int secD = 0;
+  int secE = 0;
+  int secF = 0;
+  int secG = 0;
+  int secJ = 0;
+  int secH = 0;
+  int secI = 0;
+  int totalSpots = 0;
+
+  Future readData() async {
+    databaseReferenceA.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionA = snapshot.value.toString();
+        secA = snapshot.value;
+      });
+      print('A: ${snapshot.value}');
+    });
+    databaseReferenceB.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionB = snapshot.value.toString();
+        secB = snapshot.value;
+      });
+      print('B: ${snapshot.value}');
+    });
+    databaseReferenceC.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionC = snapshot.value.toString();
+        secC = snapshot.value;
+      });
+      print('C: ${snapshot.value}');
+    });
+    databaseReferenceD.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionD = snapshot.value.toString();
+        secD = snapshot.value;
+      });
+      print('D: ${snapshot.value}');
+    });
+    databaseReferenceE.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionE = snapshot.value.toString();
+        secE = snapshot.value;
+      });
+      print('E: ${snapshot.value}');
+    });
+    databaseReferenceF.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionF = snapshot.value.toString();
+        secF = snapshot.value;
+      });
+      print('F: ${snapshot.value}');
+    });
+    databaseReferenceG.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionG = snapshot.value.toString();
+        secG = snapshot.value;
+      });
+      print('G: ${snapshot.value}');
+    });
+    databaseReferenceH.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionH = snapshot.value.toString();
+        secH = snapshot.value;
+      });
+      print('H: ${snapshot.value}');
+    });
+    databaseReferenceI.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionI = snapshot.value.toString();
+        secI = snapshot.value;
+      });
+      print('I: ${snapshot.value}');
+    });
+    databaseReferenceJ.once().then((DataSnapshot snapshot) {
+      setState(() {
+        sectionJ = snapshot.value.toString();
+        secJ = snapshot.value;
+      });
+      print('J: ${snapshot.value}');
+    });
+    setState(() {
+      totalSpots =
+          secA + secB + secC + secD + secE + secF + secG + secH + secI + secJ;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    readData();
+    var nowDate = new DateTime.now();
+    //var formatterDate = new DateFormat('MM/dd/yyyy');
+    // String formattedDate = formatterDate.format(nowDate);
+    var nowTime = new DateTime.now();
+    // var formatterTime = new DateFormat('hh:mm:ss a');
+    //String formattedTime = formatterTime.format(nowTime);
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.white,
@@ -101,7 +350,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                   child: Column(
                     children: [
                       Text(
-                        '#',
+                        totalSpots.toString(),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
@@ -128,7 +377,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                   child: Column(
                     children: [
                       Text(
-                        'hh:mm:ss',
+                        _timeString,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0,
@@ -201,7 +450,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionA,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -258,7 +507,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionB,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -322,7 +571,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionC,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -379,7 +628,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionD,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -443,7 +692,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionE,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -500,7 +749,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionF,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -564,7 +813,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionG,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -621,7 +870,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionH,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -685,7 +934,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionI,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
@@ -742,7 +991,7 @@ class _NorthSectionsFloor1State extends State<NorthSectionsFloor1> {
                 ),
                 child: Center(
                   child: Text(
-                    '#',
+                    sectionJ,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20.0,
