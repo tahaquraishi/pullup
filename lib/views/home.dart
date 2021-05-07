@@ -2579,7 +2579,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // print("goes to north garage floors");
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => NorthFloors()));
                     },
@@ -2641,7 +2640,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // print("goes to south garage floors");
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => SouthFloors()));
                     },
@@ -2705,7 +2703,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // print("goes to west garage floors");
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => WestFloors()));
                     },

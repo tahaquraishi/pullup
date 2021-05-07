@@ -201,9 +201,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 onPressed: () {
                                   if (_formKeySignUp.currentState!.validate()) {
-                                    print(formControllerEmail.text);
-                                    print(formControllerPassword.text);
-                                    print(formControllerConfirmPassword.text);
                                     _signUp(formControllerEmail.text,
                                         formControllerPassword.text);
                                   }
@@ -255,11 +252,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       await auth.createUserWithEmailAndPassword(
           email: _email, password: _password);
-      // print('Account created.');
       auth.authStateChanges().listen((User? user) async {
         if (!(user!.emailVerified)) {
           await user.sendEmailVerification();
-          // print('Please verify email to log in.');
           Fluttertoast.showToast(
             msg: 'Account created. Please verify email to log in.',
             gravity: ToastGravity.TOP,
@@ -272,7 +267,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           MaterialPageRoute(builder: (context) => LogInScreen()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        // print('Account already exists with that email.');
         Fluttertoast.showToast(
           msg: 'Account already exists with that email.',
           gravity: ToastGravity.TOP,

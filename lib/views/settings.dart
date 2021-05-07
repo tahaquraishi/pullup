@@ -204,7 +204,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   onPressed: () async {
                     await auth.signOut();
-                    // print('User successfully logged out.');
                     Fluttertoast.showToast(
                       msg: 'User logged out.',
                       gravity: ToastGravity.TOP,

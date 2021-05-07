@@ -199,8 +199,6 @@ class _LogInScreenState extends State<LogInScreen> {
                                 ),
                                 onPressed: () async {
                                   if (_formKeyLogIn.currentState!.validate()) {
-                                    print(formControllerEmail.text);
-                                    print(formControllerPassword.text);
                                     _logIn(formControllerEmail.text,
                                         formControllerPassword.text);
                                   }
@@ -255,7 +253,6 @@ class _LogInScreenState extends State<LogInScreen> {
           password: formControllerPassword.text);
       auth.authStateChanges().listen((User? user) {
         if (!(user!.emailVerified)) {
-          // print('Please verify email to log in.');
           Fluttertoast.showToast(
             msg: 'Please verify email to log in.',
             gravity: ToastGravity.TOP,
@@ -263,7 +260,6 @@ class _LogInScreenState extends State<LogInScreen> {
             timeInSecForIosWeb: 2,
           );
         } else {
-          // print('User successfully logged in.');
           Fluttertoast.showToast(
             msg: 'User logged in.',
             gravity: ToastGravity.TOP,
@@ -283,7 +279,6 @@ class _LogInScreenState extends State<LogInScreen> {
           timeInSecForIosWeb: 3,
         );
       } else if (e.code == 'wrong-password') {
-        // print('Incorrect password.');
         Fluttertoast.showToast(
           msg: 'Incorrect password.',
           gravity: ToastGravity.TOP,

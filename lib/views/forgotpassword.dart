@@ -115,7 +115,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 onPressed: () async {
                                   if (_formKeyForgotPassword.currentState!
                                       .validate()) {
-                                    print(formControllerEmail.text);
                                     _forgotPassword(formControllerEmail.text);
                                   }
                                 }),
@@ -160,7 +159,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   _forgotPassword(String _email) async {
     try {
       await auth.sendPasswordResetEmail(email: formControllerEmail.text);
-      // print('Password reset request email sent.');
       Fluttertoast.showToast(
         msg: 'Password reset request email has been sent.',
         gravity: ToastGravity.TOP,
@@ -170,7 +168,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // print('No user exists with that email.');
         Fluttertoast.showToast(
           msg: 'No account found with that email.',
           gravity: ToastGravity.TOP,

@@ -393,70 +393,60 @@ class _WestFloorsState extends State<WestFloors> {
         section1A = snapshot.value.toString();
         sec1A = snapshot.value;
       });
-      print('A: ${snapshot.value}');
     });
     databaseReference1B.once().then((DataSnapshot snapshot) {
       setState(() {
         section1B = snapshot.value.toString();
         sec1B = snapshot.value;
       });
-      print('B: ${snapshot.value}');
     });
     databaseReference1C.once().then((DataSnapshot snapshot) {
       setState(() {
         section1C = snapshot.value.toString();
         sec1C = snapshot.value;
       });
-      print('C: ${snapshot.value}');
     });
     databaseReference1D.once().then((DataSnapshot snapshot) {
       setState(() {
         section1D = snapshot.value.toString();
         sec1D = snapshot.value;
       });
-      print('D: ${snapshot.value}');
     });
     databaseReference1E.once().then((DataSnapshot snapshot) {
       setState(() {
         section1E = snapshot.value.toString();
         sec1E = snapshot.value;
       });
-      print('E: ${snapshot.value}');
     });
     databaseReference1F.once().then((DataSnapshot snapshot) {
       setState(() {
         section1F = snapshot.value.toString();
         sec1F = snapshot.value;
       });
-      print('F: ${snapshot.value}');
     });
     databaseReference1G.once().then((DataSnapshot snapshot) {
       setState(() {
         section1G = snapshot.value.toString();
         sec1G = snapshot.value;
       });
-      print('G: ${snapshot.value}');
     });
     databaseReference1H.once().then((DataSnapshot snapshot) {
       setState(() {
         section1H = snapshot.value.toString();
         sec1H = snapshot.value;
       });
-      print('H: ${snapshot.value}');
     });
     databaseReference1I.once().then((DataSnapshot snapshot) {
       setState(() {
         section1I = snapshot.value.toString();
         sec1I = snapshot.value;
       });
-      print('I: ${snapshot.value}');
     });
     databaseReference1J.once().then((DataSnapshot snapshot) {
       setState(() {
         section1J = snapshot.value.toString();
         sec1J = snapshot.value;
       });
-      print('J: ${snapshot.value}');
     });
     setState(() {
       totalSpots1 = sec1A +
@@ -475,70 +465,60 @@ class _WestFloorsState extends State<WestFloors> {
         section2A = snapshot.value.toString();
         sec2A = snapshot.value;
       });
-      print('A: ${snapshot.value}');
     });
     databaseReference2B.once().then((DataSnapshot snapshot) {
       setState(() {
         section2B = snapshot.value.toString();
         sec2B = snapshot.value;
       });
-      print('B: ${snapshot.value}');
     });
     databaseReference2C.once().then((DataSnapshot snapshot) {
       setState(() {
         section2C = snapshot.value.toString();
         sec2C = snapshot.value;
       });
-      print('C: ${snapshot.value}');
     });
     databaseReference2D.once().then((DataSnapshot snapshot) {
       setState(() {
         section2D = snapshot.value.toString();
         sec2D = snapshot.value;
       });
-      print('D: ${snapshot.value}');
     });
     databaseReference2E.once().then((DataSnapshot snapshot) {
       setState(() {
         section2E = snapshot.value.toString();
         sec2E = snapshot.value;
       });
-      print('E: ${snapshot.value}');
     });
     databaseReference2F.once().then((DataSnapshot snapshot) {
       setState(() {
         section2F = snapshot.value.toString();
         sec2F = snapshot.value;
       });
-      print('F: ${snapshot.value}');
     });
     databaseReference2G.once().then((DataSnapshot snapshot) {
       setState(() {
         section2G = snapshot.value.toString();
         sec2G = snapshot.value;
       });
-      print('G: ${snapshot.value}');
     });
     databaseReference2H.once().then((DataSnapshot snapshot) {
       setState(() {
         section2H = snapshot.value.toString();
         sec2H = snapshot.value;
       });
-      print('H: ${snapshot.value}');
     });
     databaseReference2I.once().then((DataSnapshot snapshot) {
       setState(() {
         section2I = snapshot.value.toString();
         sec2I = snapshot.value;
       });
-      print('I: ${snapshot.value}');
     });
     databaseReference2J.once().then((DataSnapshot snapshot) {
       setState(() {
         section2J = snapshot.value.toString();
         sec2J = snapshot.value;
       });
-      print('J: ${snapshot.value}');
     });
     setState(() {
       totalSpots2 = sec2A +
@@ -557,70 +537,60 @@ class _WestFloorsState extends State<WestFloors> {
         section3A = snapshot.value.toString();
         sec3A = snapshot.value;
       });
-      print('A: ${snapshot.value}');
     });
     databaseReference3B.once().then((DataSnapshot snapshot) {
       setState(() {
         section3B = snapshot.value.toString();
         sec3B = snapshot.value;
       });
-      print('B: ${snapshot.value}');
     });
     databaseReference3C.once().then((DataSnapshot snapshot) {
       setState(() {
         section3C = snapshot.value.toString();
         sec3C = snapshot.value;
       });
-      print('C: ${snapshot.value}');
     });
     databaseReference3D.once().then((DataSnapshot snapshot) {
       setState(() {
         section3D = snapshot.value.toString();
         sec3D = snapshot.value;
       });
-      print('D: ${snapshot.value}');
     });
     databaseReference3E.once().then((DataSnapshot snapshot) {
       setState(() {
         section3E = snapshot.value.toString();
         sec3E = snapshot.value;
       });
-      print('E: ${snapshot.value}');
     });
     databaseReference3F.once().then((DataSnapshot snapshot) {
       setState(() {
         section3F = snapshot.value.toString();
         sec3F = snapshot.value;
       });
-      print('F: ${snapshot.value}');
     });
     databaseReference3G.once().then((DataSnapshot snapshot) {
       setState(() {
         section3G = snapshot.value.toString();
         sec3G = snapshot.value;
       });
-      print('G: ${snapshot.value}');
     });
     databaseReference3H.once().then((DataSnapshot snapshot) {
       setState(() {
         section3H = snapshot.value.toString();
         sec3H = snapshot.value;
       });
-      print('H: ${snapshot.value}');
     });
     databaseReference3I.once().then((DataSnapshot snapshot) {
       setState(() {
         section3I = snapshot.value.toString();
         sec3I = snapshot.value;
       });
-      print('I: ${snapshot.value}');
     });
     databaseReference3J.once().then((DataSnapshot snapshot) {
       setState(() {
         section3J = snapshot.value.toString();
         sec3J = snapshot.value;
       });
-      print('J: ${snapshot.value}');
     });
     setState(() {
       totalSpots3 = sec3A +
@@ -639,70 +609,60 @@ class _WestFloorsState extends State<WestFloors> {
         section4A = snapshot.value.toString();
         sec4A = snapshot.value;
       });
-      print('A: ${snapshot.value}');
     });
     databaseReference4B.once().then((DataSnapshot snapshot) {
       setState(() {
         section4B = snapshot.value.toString();
         sec4B = snapshot.value;
       });
-      print('B: ${snapshot.value}');
     });
     databaseReference4C.once().then((DataSnapshot snapshot) {
       setState(() {
         section4C = snapshot.value.toString();
         sec4C = snapshot.value;
       });
-      print('C: ${snapshot.value}');
     });
     databaseReference4D.once().then((DataSnapshot snapshot) {
       setState(() {
         section4D = snapshot.value.toString();
         sec4D = snapshot.value;
       });
-      print('D: ${snapshot.value}');
     });
     databaseReference4E.once().then((DataSnapshot snapshot) {
       setState(() {
         section4E = snapshot.value.toString();
         sec4E = snapshot.value;
       });
-      print('E: ${snapshot.value}');
     });
     databaseReference4F.once().then((DataSnapshot snapshot) {
       setState(() {
         section4F = snapshot.value.toString();
         sec4F = snapshot.value;
       });
-      print('F: ${snapshot.value}');
     });
     databaseReference4G.once().then((DataSnapshot snapshot) {
       setState(() {
         section4G = snapshot.value.toString();
         sec4G = snapshot.value;
       });
-      print('G: ${snapshot.value}');
     });
     databaseReference4H.once().then((DataSnapshot snapshot) {
       setState(() {
         section4H = snapshot.value.toString();
         sec4H = snapshot.value;
       });
-      print('H: ${snapshot.value}');
     });
     databaseReference4I.once().then((DataSnapshot snapshot) {
       setState(() {
         section4I = snapshot.value.toString();
         sec4I = snapshot.value;
       });
-      print('I: ${snapshot.value}');
     });
     databaseReference4J.once().then((DataSnapshot snapshot) {
       setState(() {
         section4J = snapshot.value.toString();
         sec4J = snapshot.value;
       });
-      print('J: ${snapshot.value}');
     });
     setState(() {
       totalSpots4 = sec4A +
@@ -721,70 +681,60 @@ class _WestFloorsState extends State<WestFloors> {
         section5A = snapshot.value.toString();
         sec5A = snapshot.value;
       });
-      print('A: ${snapshot.value}');
     });
     databaseReference5B.once().then((DataSnapshot snapshot) {
       setState(() {
         section5B = snapshot.value.toString();
         sec5B = snapshot.value;
       });
-      print('B: ${snapshot.value}');
     });
     databaseReference5C.once().then((DataSnapshot snapshot) {
       setState(() {
         section5C = snapshot.value.toString();
         sec5C = snapshot.value;
       });
-      print('C: ${snapshot.value}');
     });
     databaseReference5D.once().then((DataSnapshot snapshot) {
       setState(() {
         section5D = snapshot.value.toString();
         sec5D = snapshot.value;
       });
-      print('D: ${snapshot.value}');
     });
     databaseReference5E.once().then((DataSnapshot snapshot) {
       setState(() {
         section5E = snapshot.value.toString();
         sec5E = snapshot.value;
       });
-      print('E: ${snapshot.value}');
     });
     databaseReference5F.once().then((DataSnapshot snapshot) {
       setState(() {
         section5F = snapshot.value.toString();
         sec5F = snapshot.value;
       });
-      print('F: ${snapshot.value}');
     });
     databaseReference5G.once().then((DataSnapshot snapshot) {
       setState(() {
         section5G = snapshot.value.toString();
         sec5G = snapshot.value;
       });
-      print('G: ${snapshot.value}');
     });
     databaseReference5H.once().then((DataSnapshot snapshot) {
       setState(() {
         section5H = snapshot.value.toString();
         sec5H = snapshot.value;
       });
-      print('H: ${snapshot.value}');
     });
     databaseReference5I.once().then((DataSnapshot snapshot) {
       setState(() {
         section5I = snapshot.value.toString();
         sec5I = snapshot.value;
       });
-      print('I: ${snapshot.value}');
     });
     databaseReference5J.once().then((DataSnapshot snapshot) {
       setState(() {
         section5J = snapshot.value.toString();
         sec5J = snapshot.value;
       });
-      print('J: ${snapshot.value}');
     });
     setState(() {
       totalSpots5 = sec5A +
